@@ -106,6 +106,7 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
   - right click on the second file and choose **Compare With Selected**
 - To compare the git history of files, you can use git plugin which resides in the source control view.
 - It is recommended to set **VSCode** as the default editor for git: `git config --global core.editor "code --wait"`. For example, you can visualize and configure interactive rebase operations with a visual editor.
+- You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some languague servers.
 
 ## **clangd**
 

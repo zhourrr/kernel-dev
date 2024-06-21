@@ -84,7 +84,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+k Ctrl+num` | fold level `num`, e.g., `Ctrl+k Ctrl+0` folds all, `Ctrl+k Ctrl+1` folds the first level |
 | `Ctrl+k Ctrl+j` | unfold all |
 | `Ctrl+Shift+v` | open **markdown** preview |
-| ``Alt+` `` | toggle bookmark |
+| `Alt+Enter` | toggle bookmark |
 
 ## **VSCode** Multiple Cursors
 

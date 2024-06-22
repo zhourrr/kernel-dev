@@ -7,6 +7,7 @@
 1. [**VSCode** Shortcuts](#vscode-shortcuts)
 1. [**VSCode** Multiple Cursors](#vscode-multiple-cursors)
 1. [Useful Functionalities in **VSCode**](#useful-functionalities-in-vscode)
+1. [Debugger](#debugger)
 1. [**clangd**](#clangd)
 1. [**clangd** Configuration](#clangd-configuration)
 1. [Formatting](#formatting)
@@ -14,6 +15,8 @@
 ## Remote Development
 
 Install **Remote - SSH** extension (or other remote extensions depending on your working environment) for remote development in **VSCode**.
+
+Note that you can connect to a container on a remote machine (first connect to the remote machine and then to the container).
 
 ## **VSCode** Settings Sync
 
@@ -106,7 +109,45 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
   - right click on the second file and choose **Compare With Selected**
 - To compare the git history of files, you can use git plugin which resides in the source control view.
 - It is recommended to set **VSCode** as the default editor for git: `git config --global core.editor "code --wait"`. For example, you can visualize and configure interactive rebase operations with a visual editor.
-- You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some languague servers.
+- You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some languague servers. **VSCode** can also ignore **git ignore** files.
+
+## Debugger
+
+In general, to debug applications, you need to configure two things per language:
+
+- a debug adapter, which is a generic debugger for a development tool (**VSCode**) that can communicate with different debuggers, such as **gdb** and **pdb**
+- how to launch your application to debug or how to attach to a running application (debug configuration)
+
+Therefore, you should install language-specific debugger extensions and write some configuration files. **VSCode** keeps debugging configuration information in a **launch.json** file located in a **.vscode** folder in your workspace (project root folder) or in your user settings or workspace settings.
+
+### **launch.json** Attributes
+
+- `name` - the reader-friendly name to appear in the Debug launch configuration dropdown
+- `type` - the type of debugger to use for this launch configuration (language-specific)
+- `request` - the request type of this launch configuration, e.g., `launch` or `attach`
+- `preLaunchTask` - (optional) to launch a task before the start of a debug session, set this attribute to the label of a task specified in **tasks.json** in the **.vscode** folder
+
+Many debuggers support some of the following attributes:
+
+- `program` - executable or file to run when launching the debugger
+- `args` - arguments passed to the program to debug
+- `env` - environment variables (the value `null` can be used to "undefine" a variable)
+- `cwd` - current working directory for finding dependencies and other files
+- `port` - port when attaching to a running process
+- `stopOnEntry` - break immediately when the program launches
+
+### Variable Substitution
+
+**VSCode** makes commonly used paths and other values available as variables and supports variable substitution inside strings in **launch.json**. This means that you do not have to use absolute paths in debug configurations.
+
+- `${workspaceFolder}` - the root path of a workspace folder
+- `${file}` - the full path of the current opened file in the active editor
+- `${fileBasename}` - the current opened file's basename
+- `${fileBasenameNoExtension}` - the current opened file's basename with no file extension
+- `${fileDirname}` - the current opened file's full folder path
+- `${fileDirnameBasename}` - the current opened file's folder name
+- `${env:USERNAME}` - the environment variable `USERNAME`
+- `${userHome}` - the path of the user's home folder
 
 ## **clangd**
 

@@ -51,6 +51,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+f` | find or replace in current file |
 | `Ctrl+Shift+f` | find or replace across the workspace |
 | `Ctrl+f` or `Ctrl+Shift+f` after selecting some text | search for that text directly without the need to type it |
+| `Ctrl+f` or `Ctrl+Shift+f` after selecting multiple lines | search for some text inside the selection |
 | `Ctrl+Shift+q` | quick search across the workspace shown in a dropdown panel |
 | type `' '`, `( )`, etc., after selecting some text | add surrounding marks to that text `example` -> `"example"` |
 | `Ctrl+s` | save |

@@ -58,6 +58,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+/` | toggle comment |
 | `Ctrl+\` | split editor |
 | `Ctrl+k Ctrl+i` | show hover |
+| `Ctrl+k Ctrl+g` | toggle codelens |
 | `F2` | rename symbol |
 | `F12` | go to definition |
 | `Alt+F12` | peek definition |

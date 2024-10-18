@@ -46,6 +46,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+m` | go to file |
 | `Ctrl+Shift+p` | show all VScode commands, e.g., to restart the language server |
 | `Ctrl+b` | toggle sidebar |
+| `Ctrl+Shift+b` | toggle secondary sidebar |
 | ``Ctrl+` `` | toggle terminal |
 | `Ctrl+t` | find symbol (fuzzy search) |
 | `Ctrl+f` | find or replace in current file |
@@ -62,8 +63,10 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `F2` | rename symbol |
 | `F12` | go to definition |
 | `Alt+F12` | peek definition |
-| `Shift+F12` | go to references |
+| `Shift+F12` | peek references |
 | `Ctrl+F12` | peek type definition |
+| `Ctrl+Shift+F12` | find all references and show results in a reference view |
+| `Alt+Shift+F12` | find all implementations and show results in a reference view |
 | right click | many more functionalities, e.g., peek call hierarchy |
 | `Shift+F10` | right click |
 | `Ctrl+.` | trigger autocompletion |

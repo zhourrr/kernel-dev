@@ -93,6 +93,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+k Ctrl+j` | unfold all |
 | `Ctrl+Shift+v` | open **markdown** preview |
 | `Alt+Enter` | toggle bookmark |
+| `Alt+Shift+Enter` | reveal bookmark in the current line |
 
 ## **VSCode** Multiple Cursors
 

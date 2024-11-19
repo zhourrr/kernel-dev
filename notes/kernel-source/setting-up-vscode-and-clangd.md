@@ -70,9 +70,12 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | right click | many more functionalities, e.g., peek call hierarchy |
 | `Shift+F10` | right click |
 | `Ctrl+.` | trigger autocompletion |
-| `Ctrl+n` | select next suggestion |
-| `Ctrl+p` | select previous suggestion |
 | `Ctrl+,` | toggle inline suggestion |
+| `Ctrl+n` | select next suggestion, or, move down |
+| `Ctrl+p` | select previous suggestion, or, move up |
+| `Ctrl+h` | move left |
+| `Ctrl+l` | move right |
+| `Ctrl+g` | jump to line |
 | `Tab` | accept suggestion |
 | `Esc` | dismiss suggestion |
 | `Alt+]` | show next suggestion |

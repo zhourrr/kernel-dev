@@ -107,6 +107,7 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
 
 - You can manipulate files in the explorer in the sidebar, e.g., create a file or a folder, collapse folders, etc.
 - You can drag the integrated terminal to a new window so that you can view it the same way you view an ordinary file.
+- Inside the integrated terminal, you can type `code $FILE_NAME` to open a file in your current VSCode window. 
 - You can drag a window out of VSCode and drop it on an empty space on your desktop to create a floating window.
 - VSCode supports port-forwarding.
 - In some cases, you might be unable to select or copy text from the integrated terminal, e.g., copy text from **tmux**. You can try using the mouse while holding the `Alt` or `Shift` keys.

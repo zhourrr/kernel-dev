@@ -138,7 +138,7 @@ In default mode, the functions are sorted in descending order with those with th
   - `[k]`: kernel level
   - `[.]`: user level
 
-The function call chains might be folded, you can use `+` to toggle the expansion and collapsing of a selected entry to view or hide its call relationship, you can also use `e` and `c` to expand and collapse all entries.
+The function call chains might be folded, you can use `+` to toggle the expansion and collapsing of a selected entry to view or hide its call chain. You can also use `e` to expand and collapse all entries. Remember, you can always press `h` to show key mappings.
 
 ### `Children` and `Self`
 

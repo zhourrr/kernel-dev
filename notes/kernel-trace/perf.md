@@ -9,12 +9,16 @@ The **perf** tool can measure events (something that you want to monitor) coming
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)
+    1. [Symbols](#symbols)
+    1. [Stack Traces](#stack-traces)
 1. [On-CPU and Off-CPU](#on-cpu-and-off-cpu)
 1. [Usage](#usage)
 1. [Options Controlling Environment Selection](#options-controlling-environment-selection)
 1. [CPU Statistics](#cpu-statistics)
 1. [Timed Profiling](#timed-profiling)
+    1. [Children and Self](#children-and-self)
 1. [Flame Graphs](#flame-graphs)
+    1. [Creating a Flame Graph](#creating-a-flame-graph)
 
 ## Prerequisites
 
@@ -32,7 +36,7 @@ Programs that have virtual machines execute their own virtual processor, which h
 
 ### Stack Traces
 
-If the stacks in `perf report` are often < 3 frames, or don't reach "thread start" or `main` function, they are probably broken.
+**Stack walking**, also known as **stack unwinding** or **backtracing**, is the process of determining the sequence of function calls that led to a particular point in a program's execution. This is often used for debugging, profiling, and error reporting. If the stacks in `perf report` are often < 3 frames, or don't reach "thread start" or `main` function, they are probably broken.
 
 ![Broken Stacks](../images/perf-broken-stacks.png)
 
@@ -41,6 +45,12 @@ Once upon a time, when computer architectures had fewer registers, the frame poi
 - For user application, compile it with `-fno-omit-frame-pointer`
 - For incomplete kernel stacks, fix them by setting `CONFIG_FRAME_POINTER=y`
 - If your kernel supports **dwarf**, you can use `--call-graph dwarf` to unwind the stacks
+
+`--call-graph` option sets up and enables call-graph recording. You can specify the stack walking method. Default is `fp`, frame pointer based unwinding (for user space).
+
+If a program was compiled with `--fomit-frame-pointer`, then you can use `--call-graph dwarf,8192` to unwind the stacks. `dwarf` provides accurate and detailed information, even in optimized code, but it is much slower than `fp` and requires heavy post-processing before it can be used.
+
+When `dwarf` recording is used, **perf** records (user) stack dump when sampled. You can specify the size of the stack dump in bytes by appending the size to the `dwarf` option, like `--call-graph dwarf,4096`.
 
 ## On-CPU and Off-CPU
 
@@ -78,8 +88,10 @@ Some common options:
 - Target command: if specified, run the command and trace it; if not specified, trace the system until `Ctrl-C` is hit
 - System-wide (all CPUs): `-a`
 - Specific CPUs: `-C <cpu-list>`
-- Call graph: `-g`
+- [Enable call graph](#stack-traces): `-g`
+- [Setup and enable call graph](#stack-traces): `--call-graph`, implies `-g`
 - Target PID: `-p <pid>`
+- Event: `-e <event>`
 - Filter to match symbols: `--filter <filter-spec>`
 - User-level only: `<event>:u`
 - Kernel-level only: `<event>:k`
@@ -139,6 +151,7 @@ In default mode, the functions are sorted in descending order with those with th
   - `[.]`: user level
 
 Remember, you can always press `h` to show key mappings:
+
 - The function call chains might be folded, you can use `+` to toggle the expansion and collapsing of a selected entry to view or hide its call chain.
 - You can also use `e` to expand and collapse all entries.
 - You can use `a` to annotate current symbol (disassemble symbol).

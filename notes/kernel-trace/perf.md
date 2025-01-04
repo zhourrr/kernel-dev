@@ -139,6 +139,8 @@ Sampling CPU stacks at `99 Hertz` (`-F 99`), for the entire system (`-a`, for al
 
 The choice of `99 Hertz`, instead of 100 Hertz, is to avoid accidentally sampling in lockstep with some periodic activity, which would produce skewed results. This is also coarse: you may want to increase that to higher rates (e.g., up to 997 Hertz) for finer resolution, especially if you are sampling short bursts of activity and you'd still like enough resolution to be useful. Bear in mind that higher frequencies means higher overhead.
 
+Use `perf report` to analyze the collected data:
+
 ![Perf Report Example](../images/perf-report-example.png)
 
 In default mode, the functions are sorted in descending order with those with the highest overhead displayed first. If you want to sort the functions by `self` overhead, use `perf report --no-children` option.
@@ -149,6 +151,32 @@ In default mode, the functions are sorted in descending order with those with th
 - `Symbol`: displays the symbol name
   - `[k]`: kernel level
   - `[.]`: user level
+
+You can also use `--sort` option. For example, to get a higher-level overview, try: `perf report --sort comm,dso`.
+
+`--hierarchy` option enables hierarchical output.
+
+```bash
+perf report -s dso,sym
+# Overhead  Shared Object      Symbol
+    50.00%  [kernel.kallsyms]  [k] kfunc1
+    20.00%  perf               [.] foo
+    15.00%  [kernel.kallsyms]  [k] kfunc2
+    10.00%  perf               [.] bar
+     5.00%  libc.so            [.] libcall
+
+
+perf report -s dso,sym --hierarchy
+#   Overhead  Shared Object / Symbol
+    65.00%    [kernel.kallsyms]
+      50.00%    [k] kfunc1
+      15.00%    [k] kfunc2
+    30.00%    perf
+      20.00%    [.] foo
+      10.00%    [.] bar
+    5.00%    libc.so
+      5.00%    [.] libcall
+```
 
 Remember, you can always press `h` to show key mappings:
 

@@ -107,7 +107,8 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
 
 - You can manipulate files in the explorer in the sidebar, e.g., create a file or a folder, collapse folders, etc.
 - You can drag the integrated terminal to a new window so that you can view it the same way you view an ordinary file.
-- Inside the integrated terminal, you can type `code $FILE_NAME` to open a file in your current VSCode window. 
+- Inside the integrated terminal, you can type `code $FILE_NAME` to open a file in your current VSCode window.
+- Inside the integrated terminal, you can use `Ctrl+r` or `Ctrl+g` to use VSCode shell integration.
 - You can drag a window out of VSCode and drop it on an empty space on your desktop to create a floating window.
 - VSCode supports port-forwarding.
 - In some cases, you might be unable to select or copy text from the integrated terminal, e.g., copy text from **tmux**. You can try using the mouse while holding the `Alt` or `Shift` keys.
@@ -120,7 +121,7 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
 - To compare the git history of files, you can use git plugin which resides in the source control view.
 - You can search through commits in the git panel. For example, to find commits written by "John" that have "fix unit test" in the commit message, you can type: `author: john message: fix unit test`.
 - It is recommended to set **VSCode** as the default editor for git: `git config --global core.editor "code --wait"`. For example, you can visualize and configure interactive rebase operations with a visual editor.
-- You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some language servers. **VSCode** can also ignore ** ignore** files.
+- You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some language servers. **VSCode** can also ignore **.ignore** files.
 
 ## Debugger
 

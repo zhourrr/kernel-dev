@@ -75,7 +75,7 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+p` | select previous suggestion, or, move up |
 | `Ctrl+h` | move left |
 | `Ctrl+l` | move right |
-| `Ctrl+g` | jump to line |
+| `Ctrl+g` | jump to line when `EditorTextFocus` or go to recent directory when `TerminalFocus` |
 | `Tab` | accept suggestion |
 | `Esc` | dismiss suggestion |
 | `Alt+]` | show next suggestion |

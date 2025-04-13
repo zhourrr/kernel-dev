@@ -11,6 +11,7 @@ The **perf** tool can measure events (something that you want to monitor) coming
 1. [Prerequisites](#prerequisites)
     1. [Symbols](#symbols)
     1. [Stack Traces](#stack-traces)
+    1. [Testing Stacks](#testing-stacks)
 1. [On-CPU and Off-CPU](#on-cpu-and-off-cpu)
 1. [Usage](#usage)
 1. [Options Controlling Environment Selection](#options-controlling-environment-selection)
@@ -50,7 +51,16 @@ Once upon a time, when computer architectures had fewer registers, the frame poi
 
 If a program was compiled with `--fomit-frame-pointer`, then you can use `--call-graph dwarf,8192` to unwind the stacks. `dwarf` provides accurate and detailed information, even in optimized code, but it is much slower than `fp` and requires heavy post-processing before it can be used.
 
-When `dwarf` recording is used, **perf** records (user) stack dump when sampled. You can specify the size of the stack dump in bytes by appending the size to the `dwarf` option, like `--call-graph dwarf,4096`.
+When `dwarf` recording is used, **perf** records (user) stack dump when sampled. You can specify the size of the stack dump in bytes by appending the size to the `dwarf` option, like `--call-graph dwarf,4096`. Note that if you have some very large automatic variables, you may need to increase the stack dump size, otherwise the stacks won't be dumped correctly because the stack is truncated.
+
+### Testing Stacks
+
+Check the stacks and fix them if they're broken.
+
+```bash
+perf record -F 99 -a -g  -- sleep 30
+perf report -n --stdio
+```
 
 ## On-CPU and Off-CPU
 
@@ -131,7 +141,7 @@ Note that if the output is all 0s or not what you expected, it is probably that 
 
 ## Timed Profiling
 
-**perf** can profile CPU usage based on sampling the instruction pointer or stack trace at a fixed interval (timed profiling).
+**perf** can profile CPU usage based on sampling the instruction pointer or stack trace at a fixed interval (timed profiling). When you run `perf record -a` on a workload, the kernel fires a timer interrupt on every CPU at a given frequency. Each interrupt must collect a stack trace for that CPU at that moment which is then sent up to the userspace `perf` process that writes it to a **perf.data** file.
 
 Sampling CPU stacks at `99 Hertz` (`-F 99`), for the entire system (`-a`, for all CPUs), with stack traces (`-g`, for call graphs), for `30` seconds:
 

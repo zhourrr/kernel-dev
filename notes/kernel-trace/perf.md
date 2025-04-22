@@ -11,6 +11,7 @@ The **perf** tool can measure events (something that you want to monitor) coming
 1. [Prerequisites](#prerequisites)
     1. [Symbols](#symbols)
     1. [Stack Traces](#stack-traces)
+    1. [perf_event_paranoid](#kernelperf_event_paranoid)
     1. [Testing Stacks](#testing-stacks)
 1. [On-CPU and Off-CPU](#on-cpu-and-off-cpu)
 1. [Usage](#usage)
@@ -52,6 +53,16 @@ Once upon a time, when computer architectures had fewer registers, the frame poi
 If a program was compiled with `--fomit-frame-pointer`, then you can use `--call-graph dwarf,8192` to unwind the stacks. `dwarf` provides accurate and detailed information, even in optimized code, but it is much slower than `fp` and requires heavy post-processing before it can be used.
 
 When `dwarf` recording is used, **perf** records (user) stack dump when sampled. You can specify the size of the stack dump in bytes by appending the size to the `dwarf` option, like `--call-graph dwarf,4096`. Note that if you have some very large automatic variables, you may need to increase the stack dump size, otherwise the stacks won't be dumped correctly because the stack is truncated.
+
+### `kernel.perf_event_paranoid`
+
+`kernel.perf_event_paranoid` is a Linux kernel parameter that controls the level of access to performance monitoring and profiling features provided by the **perf_events** subsystem. You can check the current value using the following command:
+
+```bash
+cat /proc/sys/kernel/perf_event_paranoid
+```
+
+You can tweak this setting to allow access to these features. Note that you can also run **perf** with root privileges, e.g., `sudo perf record ...`
 
 ### Testing Stacks
 

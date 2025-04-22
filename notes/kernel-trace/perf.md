@@ -58,8 +58,8 @@ When `dwarf` recording is used, **perf** records (user) stack dump when sampled.
 Check the stacks and fix them if they're broken.
 
 ```bash
-perf record -F 99 -a -g  -- sleep 30
-perf report -n --stdio
+perf record -F 99 -a -g  -- sleep 5
+perf report
 ```
 
 ## On-CPU and Off-CPU

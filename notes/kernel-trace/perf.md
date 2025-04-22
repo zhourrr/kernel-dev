@@ -62,7 +62,7 @@ When `dwarf` recording is used, **perf** records (user) stack dump when sampled.
 cat /proc/sys/kernel/perf_event_paranoid
 ```
 
-You can tweak this setting to allow access to these features. Note that you can also run **perf** with root privileges, e.g., `sudo perf record ...`
+You can tweak this setting to allow access to these features. Note that you can also run **perf** with root privileges, e.g., `sudo perf record`.
 
 ### Testing Stacks
 

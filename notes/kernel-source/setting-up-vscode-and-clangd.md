@@ -89,7 +89,8 @@ You can search for a keybinding here by typing that keybinding. You can view any
 | `Ctrl+shift+t` | open timeline view (local file edit history) |
 | `Ctrl+Tab` | switch opened window |
 | `Ctrl+num` | switch to `num` window, e.g., `Ctrl+2` switches to the second window |
-| `Ctrl+w` | delete word left |
+| `Ctrl+w` | delete word part left |
+| `Ctrl+Shift+w` | delete word left |
 | `Ctrl+Shift+[` | fold the innermost uncollapsed region at the cursor |
 | `Ctrl+Shift+]` | unfold the collapsed region at the cursor |
 | `Ctrl+k Ctrl+num` | fold level `num`, e.g., `Ctrl+k Ctrl+0` folds all, `Ctrl+k Ctrl+1` folds the first level |

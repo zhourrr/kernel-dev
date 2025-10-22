@@ -120,9 +120,9 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
   - right click on the first file and choose **Select For Compare**
   - right click on the second file and choose **Compare With Selected**
 - To compare the git history of files, you can use git plugin which resides in the source control view.
-- You can search through commits in the git panel. For example, to find commits written by "John" that have "fix unit test" in the commit message, you can type: `author: john message: fix unit test`.
 - It is recommended to set **VSCode** as the default editor for git: `git config --global core.editor "code --wait"`. For example, you can visualize and configure interactive rebase operations with a visual editor.
 - You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some language servers. **VSCode** can also ignore **.ignore** files.
+- VSCode has a built-in **Simple Browser** that can be used to render **HTML** content without leaving the editor. The simple browser can be launched from the **command pallette** with the `Simple Browser: Show` command.
 
 ## Debugger
 

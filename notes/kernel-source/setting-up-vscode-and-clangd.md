@@ -122,7 +122,7 @@ You can also select a region for multi-cursors while pressing `Alt+Shift`.
 - To compare the git history of files, you can use git plugin which resides in the source control view.
 - It is recommended to set **VSCode** as the default editor for git: `git config --global core.editor "code --wait"`. For example, you can visualize and configure interactive rebase operations with a visual editor.
 - You can set **Files: exclude** in the settings to hide specific files or folders. This setting might also be respected by some other plugins, e.g., workspace search and some language servers. **VSCode** can also ignore **.ignore** files.
-- VSCode has a built-in **Simple Browser** that can be used to render **HTML** content without leaving the editor. The simple browser can be launched from the **command pallette** with the `Simple Browser: Show` command.
+- VSCode has an **Integrated Browser** that can be used to render **HTML** content without leaving the editor. The browser can be launched from the **command pallette** with the `Open Integrated Browser` command.
 
 ## Debugger
 
